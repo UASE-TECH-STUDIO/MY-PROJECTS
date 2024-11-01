@@ -1,0 +1,89 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Sixtyfour+Convergence&display=swap');
+
+
+body {
+margin: 0;
+display:flex;
+height: 100vh;
+align-items: center;
+background-color: black;
+justify-content: center;
+}
+
+.btn{
+display: block;
+text-align: center;
+background-color: white;
+border-radius: 10px;
+box-shadow: 4px 4px 8px rgba(236, 27, 107, 0.7);
+padding: 10px;
+font-family: Arial, Helvetica, sans-serif;
+font-weight: bold;
+color: blue;
+text-decoration: none;
+font-family: "Sixtyfour Convergence", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  font-variation-settings:
+    "BLED" 0,
+    "SCAN" 0,
+    "XELA" 0,
+    "YELA" 0;
+    position: relative;
+    overflow: hidden;
+    animation: button 6s linear infinite, button-bounce 1s ease-in-out infinite;
+}
+
+  
+  .btn-top {
+    display: block;
+    margin-bottom: 5px; /* Adjust margin as needed */
+  }
+  
+  .btn-bottom {
+    display: block;
+  }
+  .btn::before{
+    content: "";
+    position: absolute;
+    background-color: orangered;
+    width: 0;
+    height: 0;
+    top:var(--yPos);
+    left: var(--xPos);
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    transition: width .5s height .5s;
+  }
+.btn span{
+    position: relative;
+    z-index: 1;
+}
+  
+  .btn:hover::before{
+    width: 200px;
+    height: 200px;
+  }
+  @keyframes button{
+    0%{
+        filter: hue-rotate(0);
+    }
+
+    
+    100%{
+        filter: hue-rotate(720deg);
+    }
+
+  }
+  @keyframes button-bounce {
+    0% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.2);
+    }
+    100% {
+      transform: scale(1);
+    }
+}

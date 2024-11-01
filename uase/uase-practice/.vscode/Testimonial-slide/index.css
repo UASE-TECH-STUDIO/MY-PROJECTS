@@ -1,0 +1,113 @@
+/* Testimonial Container */
+.testimonial {
+    background-color: #3e206d; /* Darker purple for a classier look */
+    width: 500px;
+    border-radius: 15px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3); /* Softer shadow for a smoother effect */
+    min-width: 400px;
+    padding: 70px 30px 30px 30px;
+    margin: 15px;
+    color: #f3e8d7; /* Softer wheat for a more elegant appearance */
+    position: relative;
+    text-align: center; /* Center-align text for a balanced look */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Use a more modern font */
+    overflow: visible; /* Allow image to float outside the borders */
+    transition: transform 0.3s ease-in-out; /* Adds a subtle scale effect */
+    opacity: 0; /* Start invisible for animation effect */
+    animation: fadeIn 0.8s ease forwards;
+}
+
+/* Hover Effect for Testimonial */
+.testimonial:hover {
+    transform: scale(1.05); /* Slightly enlarges the card on hover */
+    background-color: #462077; /* Slightly changes background color */
+}
+
+.testimonial img {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    left: 50%;
+    transform: translateX(-50%);
+    top: -35px; /* Move the image further outside the container */
+    position: absolute;
+    border: 2px solid rgba(255, 255, 255, 0.6); /* Fainter white border */
+    background: none;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Light shadow for depth */
+    animation: float 3s ease-in-out infinite, subtleGlow 5s ease-in-out infinite; /* Floating and subtle glow animations */
+    z-index: 1;
+}
+
+/* Floating Animation */
+@keyframes float {
+    0%, 100% {
+        transform: translateX(-50%) translateY(0);
+    }
+    50% {
+        transform: translateX(-50%) translateY(-10px);
+    }
+}
+
+/* Fade-in Animation */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Body Styling */
+body {
+    height: 100vh;
+    display: flex;
+    margin: 0;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #2e003e, #190026); /* Gradient background for a luxurious feel */
+}
+
+/* Text Styling */
+.testimonial .text {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin: 15px 0 0 0;
+    color: #f9f5eb; /* Slightly lighter color for better readability */
+}
+
+/* Name Styling */
+.testimonial .username {
+    margin-top: 15px;
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: #ffe4c4; /* Softer light color for name */
+}
+
+/* Adding Hue Rotation on Hover */
+.testimonial:hover img {
+    filter: hue-rotate(30deg);
+}
+
+/* Add a glowing effect to the border */
+.testimonial::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 15px;
+    background: linear-gradient(45deg, rgba(255, 0, 150, 0.5), rgba(0, 204, 255, 0.5));
+    z-index: -1;
+    filter: blur(10px);
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+}
+
+/* Show glowing effect on hover */
+.testimonial:hover::before {
+    opacity: 1;
+}

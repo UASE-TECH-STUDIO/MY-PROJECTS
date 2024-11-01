@@ -1,0 +1,259 @@
+/* Color Variables */
+:root {
+    --bg-color: #582f0e;
+    --accent-color: #7f4f24;
+    --highlight-color: #936639;
+    --light-bg: #c2c5aa;
+    --text-color: #333d29;
+    --hover-highlight: #b6ad90;
+}
+
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body and Font */
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--bg-color);
+}
+
+/* Header */
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 2rem;
+    background-color: var(--bg-color);
+    color: var(--bg-color);
+}
+
+header .logo img {
+    width: 100px;
+}
+
+header nav ul {
+    display: flex;
+    list-style-type: none;
+}
+
+header nav ul li {
+    margin-left: 2rem;
+}
+
+header nav ul li a {
+    color: var(--light-bg);
+    text-decoration: none;
+    font-weight: bold;
+}
+
+header nav ul li a:hover {
+    color: var(--highlight-color);
+}
+
+/* Hero Section */
+#hero {
+    text-align: center;
+    padding: 6rem 2rem;
+    background-color: var(--highlight-color);
+    color: var(--light-bg);
+}
+
+#hero h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+#hero p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+}
+
+#hero .btn {
+    padding: 1rem 2rem;
+    background-color: var(--accent-color);
+    color: var(--light-bg);
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+#hero .btn:hover {
+    background-color: var(--hover-highlight);
+}
+
+/* Section Styles */
+section {
+    padding: 4rem 2rem;
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+
+}
+
+section.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+h2 {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+/* Services Section */
+#services {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.service-card {
+    background-color: var(--light-bg);
+    padding: 2rem;
+    margin: 1rem;
+    border-radius: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    max-width: 300px;
+    text-align: center;
+    transition: transform 0.3s ease;
+    
+    
+}
+
+.service-card:hover {
+    transform: translateY(-10px);
+}
+
+/* Registration Form Section */
+#registration form {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 2rem;
+    background-color: var(--light-bg);
+    border-radius: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+#our{
+    color: grey; 
+}
+.logo{
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    box-shadow: 4px 4px 8px rgba(255,255,255,0.5),
+    -4px -4px 8px rgba(0,0,0,0.5);
+    animation: hue 6s linear infinite;
+}
+#join{
+    color: grey;  
+}
+#contact{
+    color: grey;  
+}
+
+#registration label, #registration input, #registration button {
+    display: block;
+    width: 100%;
+    margin-bottom: 1rem;
+}
+#about{
+    color: grey;
+}
+
+#registration button {
+    padding: 1rem;
+    background-color: var(--accent-color);
+    color: var(--light-bg);
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#registration button:hover {
+    background-color: var(--hover-highlight);
+}
+
+/* Footer */
+footer {
+    background-color: var(--text-color);
+    color: var(--light-bg);
+    text-align: center;
+    padding: 1rem;
+}
+
+@keyframes hue{
+    0%{
+        filter: hue-rotate(0deg);
+    }
+    100%{
+        filter: hue-rotate(360deg);
+    }
+}
+/* Base styles for the Service Card animations */
+.service-card {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+/* Visible class to trigger animation on scroll */
+.service-card.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+/* Base Service Card Styles */
+.service-card {
+    background-color: var(--accent-color);
+    color: var(--text-color);
+    padding: 2rem;
+    margin: 1rem;
+    border-radius: 15px;              /* Rounded corners */
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+    max-width: 300px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+    opacity: 0;                       /* Initial opacity for animation */
+    transform: translateY(50px);      /* Initial position for scroll animation */
+}
+
+/* Hover Effect */
+.service-card:hover {
+    transform: translateY(-10px);     /* Lift effect on hover */
+    box-shadow: 0px 12px 20px rgba(0, 0, 0, 0.3); /* Deeper shadow on hover */
+    background-color: var(--hover-highlight); /* Slightly darker background */
+}
+
+/* Service Card Title */
+.service-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: var(--text-color);
+}
+
+/* Service Card Paragraph */
+.service-card p {
+    font-size: 1rem;
+    color: var(--text-color);
+    line-height: 1.6;
+}
+
+
+
+/* Staggered delay for each card */
+.service-card:nth-child(1) { transition-delay: 0.1s; }
+.service-card:nth-child(2) { transition-delay: 0.2s; }
+.service-card:nth-child(3) { transition-delay: 0.3s; }
+.service-card:nth-child(4) { transition-delay: 0.4s; }
+.service-card:nth-child(5) { transition-delay: 0.5s; }
+.service-card:nth-child(6) { transition-delay: 0.6s; }

@@ -1,0 +1,116 @@
+/* Body Styling */
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background: url(https://images.unsplash.com/photo-1493246507139-91e8fad9978e?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D) no-repeat center center/cover;
+    color: #fff;
+}
+
+/* Heading Styling */
+h2 {
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    font-size: 1.5rem;
+    text-align: center;
+    margin-bottom: 20px;
+    color: #f3e8d7;
+    animation: fadeIn 1.5s ease-in-out;
+}
+
+/* Digital Clock Container */
+.digital-clock {
+    display: flex;
+    position: relative;
+    backdrop-filter: blur(10px);
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+/* Clock Digits and Labels Styling */
+.digital-clock div {
+    margin: 0 15px;
+    text-align: center;
+}
+
+/* Time Digit Styling */
+.digital-clock span {
+    display: block;
+    width: 100px;
+    height: 80px;
+    background: rgba(255, 230, 230, 0.8);
+    border-radius: 5px; 
+    border: 2px solid #ffb6c1;
+    color: #fff;
+    font-size: 2.5rem;
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+    margin-bottom: 5px;
+    animation: pulse 2s infinite;
+}
+
+/* Label Styling for Hours, Minutes, Seconds */
+.digital-clock .text {
+    font-size: 0.9rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color:  rgba(255, 69, 0, 0.8); 
+    opacity: 0.9;
+    margin-top: -5px; /* Reduce space between digit and label */
+}
+
+/* AM/PM Styling */
+.digital-clock #AmPm {
+    background: rgba(255, 69, 0, 0.8); /* Slightly thinner background for AM/PM */
+    width: 60px;
+    height: 30px;
+    font-size: 1.2rem;
+    border-radius: 5px;
+    position: absolute;
+    bottom: -15px;
+    right: 10px;
+    color: #fff;
+    text-align: center;
+    line-height: 30px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+    animation: bounce 1.5s ease infinite alternate;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+}
+
+@keyframes bounce {
+    0% {
+        transform: translateY(0);
+    }
+    100% {
+        transform: translateY(-10px);
+    }
+}

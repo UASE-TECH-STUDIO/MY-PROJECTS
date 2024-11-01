@@ -1,0 +1,397 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+   
+  }
+  
+  body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    transition: 1s linear;
+    
+  }
+
+  
+/* Header styling */
+header {
+    background: linear-gradient(90deg, blue, #333);
+    color: #fff;
+    padding: 1rem 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    box-shadow: 4px 4px 8px rgba(255, 255, 255, 0.7);
+    position: relative;
+    z-index: 10;
+    background-color: #333;
+  }
+  
+  /* Logo inside the header */
+  .logo img {
+    max-width: 200px;
+    width: 200px;
+    position: absolute;
+    height: 200px;
+    right: 50%;
+    left: 180%;
+    transform: translate(-50%, -50%);
+    top: 50px;
+    margin: 1rem 0;
+  }
+  
+  /* Navigation styling */
+  nav ul {
+    list-style: none;
+    display: flex;
+    gap: 1.5rem;
+    padding: 0;
+    margin: 1rem 0;
+  }
+  
+  nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s;
+  }
+  
+  nav ul li a:hover {
+    color: lightyellow;
+  }
+  
+  /* Hero section styling (Father Christmas & Countdown) */
+  #hero {
+    background: linear-gradient(90deg, #e0f7fa, #b2ebf2);
+    text-align: center;
+    padding: 4rem 1rem;
+    margin: 0;
+    border: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+  }
+  
+
+  section:not(#hero,#about, #contact){
+    color: blue;
+    animation: hue-rotate-animation 10s infinite linear;
+    background: url(https://files.oaiusercontent.com/file-syFxovPrHJ246nBs3ulnR67h?se=2024-10-27T10%3A48%3A25Z&sp=r&sv=2024-08-04&sr=b&rscc=max-age%3D604800%2C%20immutable%2C%20private&rscd=attachment%3B%20filename%3D7b533279-5f0a-48bc-9695-d615e5911278.webp&sig=fzFiHSOHKV4Bhj/cKotaZGAuwBecv7/YJGm/avMeyuQ%3D);
+  }
+  #about{
+    animation: hue-rotate-animation 10s infinite linear;
+    background: linear-gradient(90deg, black, blue);
+    border: none;
+  }
+
+  
+  #hero h1 {  
+    font-size: 2.5rem;
+    animation: glowText 2s linear infinite;
+    margin-bottom: 1rem;
+  }
+  #about{
+    color: whitesmoke;
+  }
+  
+  button {
+    padding: 0.5rem 1rem;
+    color: #fff;
+    background-color: #00796b;
+    border: none;
+    cursor: pointer;
+  }
+  
+  section {
+    padding: 2rem;
+  }
+  
+  #services .service-list,
+  #team .team-list,
+  #reviews .reviews-list {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+  
+  .service, .team-member, .review {
+    flex: 1 1 45%;
+    background: #f5f5f5;
+    padding: 1rem;
+    border-radius: 5px;
+    margin-bottom: 1rem;
+  }
+  
+  #contact .social-links a {
+    color: #00796b;
+    margin-right: 1rem;
+  }
+  
+  footer {
+    background: #333;
+    color: #fff;
+    text-align: center;
+    padding: 1rem;
+  }
+ 
+  section {
+    padding: 20px;
+  }
+  
+  /* Heading Styles */
+  h2 {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  /* Paragraph Styles */
+  p {
+    font-size: 16px;
+    margin-bottom: 20px;
+  }
+  
+  /* List Styles */
+  ul {
+    list-style-type: disc;
+    margin-left: 20px;
+    padding-left: 20px;
+  }
+  
+  /* Bold Text Styles */
+  strong {
+    font-weight: bold;
+  }
+
+  .logo {
+    object-fit: cover;
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+    animation: hue-rotate-animation 10s infinite linear;
+    padding: 20px;
+  }
+  #contact{
+    animation: hue-rotate-animation 10s infinite linear;
+    background: linear-gradient(90deg, lightblue, lightblue);
+  }
+#father-christmas{
+    object-fit: cover;
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+    
+    box-shadow: 4px 4px 8px rgba(255,255,255, 0.7),
+    -4px -4px 8px rgba(255,255,255, 0.7);
+    animation: rotateGlow 30s linear infinite;
+    position: absolute;
+    right: 68%;
+    margin: 5px;
+    padding: 5px;
+    top: 92px;
+   
+   
+   
+   
+   
+    
+}
+#headEl{
+    position: relative;
+    left: 20%;
+    right: 20%;
+    height: auto;
+    width: auto;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+#countdown-container {
+    background-color: transparent;
+    width: 500px;
+    height: 200px;
+    padding: 0;
+    border-radius: 10px;
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    text-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+    font-family: Montserrat, sans-serif;
+  color: whitesmoke;
+  position: absolute;
+  right: 55%;
+ 
+  top: 70px;
+  margin: 5px;
+  padding: 5px;
+  
+}
+
+#tittle{
+    text-transform: uppercase;
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+#year {
+    font-size: 30px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+#date-container {
+    display: flex;
+    justify-content: space-around;
+}
+
+#date {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.number {
+    font-size: 36px;
+    font-weight: bold;
+}
+
+#text {
+    font-size: 16px;
+}
+  
+  
+  @keyframes hue-rotate-animation {
+    0% {
+      filter: hue-rotate(0deg);
+    }
+    100% {
+      filter: hue-rotate(360deg);
+    }
+  }
+  @keyframes rotateGlow {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes glowText {
+    0% {
+        text-shadow: 0 0 10px rgba(255, 228, 196, 0.7), 0 0 20px rgba(255, 228, 196, 0.5);
+    }
+    100% {
+        text-shadow: 0 0 20px rgba(255, 228, 196, 1), 0 0 30px rgba(255, 228, 196, 0.7);
+    }
+}
+/* Styling for Contact Form */
+#form-container {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    margin-right: 20px; /* Space between form and address */
+    flex: 1; /* Make form take available space */
+}
+
+h3 {
+    margin-bottom: 15px;
+    font-size: 1.5em;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+input[type="text"],
+textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1em;
+}
+
+textarea {
+    resize: vertical; /* Allow vertical resizing only */
+}
+
+button.rounded {
+    background-color: #28a745; /* Green button color */
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button.rounded:hover {
+    background-color: #218838; /* Darker green on hover */
+}
+
+/* Styling for Address Section */
+#address-container {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    flex: 1; /* Make address take available space */
+}
+
+/* Footer Styling */
+.footer-about, .footer-subscribe {
+    flex: 1; /* Make sections take available space */
+    padding: 20px;
+}
+
+.footer-subscribe {
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+#subscribe-container {
+    display: flex;
+    margin-top: 10px;
+}
+
+#subscribe-container input[type="text"] {
+    flex: 1; /* Allow input to take available space */
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-right: 10px; /* Space between input and button */
+}
+
+button.right-rounded {
+    background-color: #007bff; /* Blue button color */
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button.right-rounded:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .flex {
+        flex-direction: column; /* Stack form and address on smaller screens */
+    }
+    #form-container, #address-container {
+        margin-right: 0; /* Reset margin */
+        margin-bottom: 20px; /* Space between stacked elements */
+    }
+}

@@ -1,0 +1,93 @@
+body {
+    margin: 0;
+    height: 100vh;
+    background-color: black;
+    overflow: hidden;
+}
+
+span {
+    background: url(https://cdn4.iconfinder.com/data/icons/small-n-flat/24/heart-1024.png);
+    height: 100px;
+    width: 100px;
+    pointer-events: none;
+    position: absolute;
+    background-size: cover;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50% -50%);
+    animation: animate 6s linear;
+} 
+strong {
+    background-color: blue;
+    text-align: center;
+    font-size: 40px;
+    font-style: oblique;
+    font-family: Georgia, serif;
+  font-weight: 600;
+  font-style: italic;
+  letter-spacing: 1px;
+  line-height: 1.2;
+    color: greenyellow;
+    text-decoration-color: whitesmoke;
+    pointer-events: none;
+    position: absolute; /* Use absolute positioning to place the element relative to the viewport */
+    top: 20%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Center the element horizontally and vertically */
+    animation: animate 5s linear;
+  }  
+  img {
+    max-width: 100%;
+    height: 300px;
+    display: block;
+    border-radius: 50%;
+    position: absolute;
+    top: 40%;
+    left: 40%;
+    transform: translate(-50%, -50%);
+    border: 2px solid red; /* Add a 2-pixel white border */
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5); /* Add a shadow for depth */
+    animation: bounce 1s ease-in-out infinite; /* Add a bounce animation */
+  }
+  
+ 
+p {
+    background-color: blue;
+    text-align: center;
+    text-decoration-color:rgb(245, 245, 245) ;
+    pointer-events: none;
+position: 50% 50%;
+background-size: cover;
+top: 50%;
+left: 50%;
+transform: translate(-50% -50%);
+animation: animate 1s linear;
+
+    
+}
+@keyframes animate {
+    0% {
+        transform:translate(-50%, -50%);
+        opacity: 1;
+        filter: hue-rotate(0);
+    }
+
+    100%{
+        transform: translate(-50%, -5000%);
+        opacity:0;
+        filter: hue-rotate(720deg);
+    }
+
+    
+}
+@keyframes bounce {
+    0% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.2);
+    }
+    100% {
+      transform: scale(1);
+    }
+}

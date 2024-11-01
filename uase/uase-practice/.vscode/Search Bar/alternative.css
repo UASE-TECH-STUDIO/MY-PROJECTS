@@ -1,0 +1,103 @@
+/* Base styles */
+body {
+    margin: 0;
+    height: 100vh;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    background: linear-gradient(135deg, #89f7fe, #66a6ff);
+    font-family: Arial, sans-serif;
+}
+
+/* Search icon */
+.search {
+    width: 25px;
+    cursor: pointer;
+    position: absolute;
+    left: 5%;
+    transition: transform 0.3s ease-in-out;
+}
+
+
+/* Microphone icon */
+.mic {
+    width: 30px;
+    cursor: pointer;
+    position: absolute;
+    right: 8%;
+    transition: transform 0.3s ease-in-out;
+}
+
+/* Container for the search bar */
+.search-bar-container {
+    background: linear-gradient(135deg, #f6d365, #fda085);
+    border-radius: 50px;
+    width: 50px;
+    height: 50px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    position: relative;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    display: flex;
+    transition: width 0.5s ease-in-out;
+    overflow: hidden; /* Hide overflowing content */
+}
+
+/* Search input */
+.input {
+    border: none;
+    background: transparent;
+    color: #333;
+    font-size: 16px;
+    font-family: 'Courier New', monospace;
+    outline: none;
+    padding: 10px;
+    width: 0;
+    transition: width 0.5s ease-in-out, opacity 0.4s ease-in-out;
+    opacity: 0; /* Initially hidden */
+}
+
+/* Expanded state for the search bar */
+.active.search-bar-container {
+    width: 300px; /* Expand to full width */
+    transition: width 0.5s ease-in-out;
+}
+
+/* Active state styles for input */
+.active .input {
+    width: 100%; /* Expand input to fill the container */
+    opacity: 1; /* Make input visible */
+}
+
+/* Active state for microphone */
+.active .mic {
+    transform: scale(1.2); /* Slightly enlarge icon */
+}
+
+/* Active state for search icon */
+.active .search {
+    position: absolute;
+    left: 10%;
+    transform: translateX(-50%) rotate(45deg); /* Rotate icon when active */
+}
+
+/* Search bar animations */
+.search-bar-container:hover .search,
+.search-bar-container:hover .mic {
+    transform: scale(1.1); /* Slight enlargement on hover */
+}
+
+/* Animation for the input placeholder */
+.input::placeholder {
+    color: #666;
+    font-style: italic;
+    opacity: 0.8;
+    transition: color 0.3s ease-in-out;
+}
+
+/* Hover effect for search bar */
+.search-bar-container:hover {
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+    background: linear-gradient(135deg, #fda085, #f6d365);
+}

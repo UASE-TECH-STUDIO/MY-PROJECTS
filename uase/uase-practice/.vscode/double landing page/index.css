@@ -1,0 +1,91 @@
+body {
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    height: 100vh;
+    align-items: center;
+    text-align: center;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    overflow: hidden;
+}
+
+h1 {
+    font-size: 100px;
+    color: aliceblue;
+    backdrop-filter: brightness(.5);
+    letter-spacing: 4px;
+}
+
+.btn {
+    background-color: black;
+    color: white;
+    padding: 20px 40px;
+    font-size: 25px;
+    border: 4px solid;
+    cursor: pointer;
+    transition: 1s background-color;
+}
+
+.btn:hover {
+    background-color: white;
+    color: black;
+}
+
+.split {
+    width: 50%;
+    height: 100%;
+    top: 0;
+}
+
+.split.left {
+    position: absolute;
+    left: 0;
+    background-color: pink;
+    background-image: url(https://www.aptronixindia.com/media/catalog/product/cache/31f0162e6f7d821d2237f39577122a8a/i/p/iphone_15_pink_pdp_image_position-1__wwen-removebg-preview.png);
+    background-size: cover;
+}
+
+.split.right {
+    position: absolute;
+    right: 0;
+    background-color: lightblue;
+    background-image: url(https://images.samsung.com/is/image/samsung/p6pim/bd/sm-m556blgdbng/gallery/bd-galaxy-m55-5g-sm-m556-sm-m556blgdbng-thumb-542626587?$344_344_PNG$);
+    background-size: cover;
+}
+
+.active-left .left {
+    width: 75%;
+}
+
+.active-left .right {
+    width: 25%;
+}
+
+.active-right .right {
+    width: 75%;
+}
+
+.active-right .left {
+    width: 25%;
+}
+
+.left, .right {
+    transition: 2s ease-in-out;
+}
+
+/* New styles for the "Click here" link */
+.whatsapp-link {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 10px 20px;
+    color: #007bff; /* Link color */
+    text-decoration: none;
+    border: 2px solid #007bff; /* Link border */
+    border-radius: 5px; /* Rounded corners */
+    transition: background-color 0.3s, color 0.3s; /* Transition effect */
+}
+
+.whatsapp-link:hover {
+    background-color: #007bff; /* Background color on hover */
+    color: white; /* Text color on hover */
+}
