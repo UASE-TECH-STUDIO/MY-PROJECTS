@@ -1,0 +1,154 @@
+/* Global Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Montserrat", sans-serif;
+    scroll-behavior: smooth;
+}
+
+/* Background Styling */
+body {
+    background: url('image.webp') no-repeat center center fixed;
+    background-size: cover;
+    color: white;
+}
+
+/* Header & Navigation */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.8);
+    padding: 20px 8%;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    animation: slideInDown 1s ease-out;
+}
+
+/* Logo Styling */
+.logo img {
+    width: 70px;
+    height: auto;
+    border-radius: 10px;
+    animation: bounceIn 1.2s ease-in-out;
+}
+
+/* Title Styling */
+.site-title {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #f8b400;
+    text-transform: uppercase;
+    text-align: center;
+    flex-grow: 1;
+}
+
+/* Navigation Styling */
+nav ul {
+    list-style: none;
+    display: flex;
+}
+
+nav ul li {
+    margin: 0 15px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: white;
+    font-size: 1rem;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+nav ul li a:hover {
+    color: orange;
+    background: rgba(255, 255, 255, 0.1);
+    animation: hueRotate 0.5s linear;
+}
+
+/* Hero Section */
+.home {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 90vh;
+    text-align: center;
+    animation: fadeIn 2s ease-in;
+}
+
+.intro {
+    background: rgba(0, 0, 0, 0.6);
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0px 4px 10px rgba(255, 255, 255, 0.1);
+}
+
+/* Button Styling */
+button {
+    padding: 12px 25px;
+    font-size: 1rem;
+    background: linear-gradient(135deg, #ff8c00, #ff4d00);
+    border: none;
+    color: white;
+    cursor: pointer;
+    border-radius: 25px;
+    transition: transform 0.3s ease-in-out;
+}
+
+button:hover {
+    background: linear-gradient(135deg, #ff4d00, #ff8c00);
+    transform: scale(1.05);
+}
+
+/* Footer */
+footer {
+    background: rgba(0, 0, 0, 0.7);
+    padding: 20px;
+    text-align: center;
+    margin-top: 50px;
+}
+
+/* Animations */
+@keyframes slideInDown {
+    from {
+        transform: translateY(-100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes bounceIn {
+    from {
+        transform: scale(0.5);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes hueRotate {
+    from {
+        filter: hue-rotate(0deg);
+    }
+    to {
+        filter: hue-rotate(360deg);
+    }
+}

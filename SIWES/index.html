@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UASE Tech Studio</title>
+    <link rel="icon" href="imageee.bmp" type="image/x-icon">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="imageee.bmp" alt="UASE Tech Studio Logo">
+        </div>
+        <h1 class="site-title">UASE TECH STUDIO</h1>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#courses">Courses</a></li>
+                <li><a href="#siwes">Siwes Program</a></li>
+                <li><a href="#virtual-assistance">Virtual Assistance</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="#about">About</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="home" class="home">
+            <div class="intro">
+                <h2>Welcome to UASE Tech Studio</h2>
+                <p>Unlock your potential with our comprehensive training programs in Web Development, Programming Languages, Front-End Development, Data Analysis, and Computer Proficiency.</p>
+                <button onclick="location.href='#courses'">JOIN US</button>
+            </div>
+        </section>
+
+        <section id="courses" class="courses">
+            <h2>Our Courses</h2>
+            <p>Gain in-demand skills and set yourself apart in today’s competitive tech landscape!</p>
+            <ul>
+                <li>Web Development</li>
+                <li>Programming Languages</li>
+                <li>Front-End Development</li>
+                <li>Data Analysis</li>
+                <li>Computer Proficiency</li>
+            </ul>
+            <button onclick="location.href='#registration'">Register Now</button>
+        </section>
+
+        <section id="registration" class="registration">
+            <h3>Register Here</h3>
+            <form>
+                <input type="text" placeholder="Full Name" required>
+                <input type="email" placeholder="Enter Email Here" required>
+                <input type="password" placeholder="Enter Password Here" required>
+                <button type="submit">Register</button>
+                <p>Already have an account? <a href="#">Login Here</a></p>
+            </form>
+        </section>
+
+        <section class="login">
+            <h3>LOGIN HERE</h3>
+            <form id="loginForm">
+                <input type="email" placeholder="Enter Email Here" required>
+                <input type="password" placeholder="Enter Password Here" required>
+                <a href="/MY-PROJECTS/uase/uase-practice/">
+                    <button type="button">Login</button>
+                </a>                
+                <p>Don't have an account? <a href="#registration">Sign Up Here</a></p>
+                <a href="#">Login With</a>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2025 UASE Tech Studio. All rights reserved.</p>
+            <ul>
+                <li><a href="tel:+2348146550674">Call Us: +2348146550674</a></li>
+                <li><a href="mailto:ustyventures@gmail.com">Email: ustyventures@gmail.com</a></li>
+                <li><a href="#">Follow Us: @ustyalhaji | @ustyalhajiserviceslimited</a></li>
+            </ul>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

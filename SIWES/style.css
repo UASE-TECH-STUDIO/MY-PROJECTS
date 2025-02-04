@@ -1,0 +1,298 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Montserrat", sans-serif;
+    scroll-behavior: smooth;
+}
+
+/* Background Styling */
+body {
+    background: url('image.webp') no-repeat center center fixed;
+    background-size: cover;
+    color: white;
+}
+
+/* Header & Navigation */
+/* Header Styling */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.8);
+    padding: 20px 8%;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    animation: slideInDown 1s ease-out;
+    
+}
+
+/* Logo Styling */
+.logo img {
+    width: 70px; 
+    height: auto;
+    border-radius: 10px;
+    animation: bounceIn 1.2s ease-in-out;
+    animation: hueRotate 0.5s linear infinite;
+}
+
+/* Title Styling */
+.site-title {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #f8b400;
+    text-transform: uppercase;
+    text-align: center;
+    flex-grow: 1; 
+    animation: hueRotate 30s linear infinite;
+}
+
+/* Navigation Styling */
+nav ul {
+    list-style: none;
+    display: flex;
+    animation: fadeIn 2s ease-in-out;
+    padding-left: 0;
+    
+}
+
+nav ul li {
+    margin-left: 10px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease-in-out, background-color 0.3s ease-in-out;
+    padding: 5px 10px;
+    border-radius: 5px;
+    animation: hueRotate 10s infinite linear;
+    transition: 0.3s;
+    font-size: 1rem;
+    animation: hueRotate 0.5s linear;
+}
+
+nav ul li a:hover {
+    color: orange;
+    background: rgba(255, 255, 255, 0.1);
+    transform: scale(1.05);
+    animation: hueRotate 0.5s linear;
+}
+main {
+    padding: 40px 10%;
+    text-align: center;
+}
+
+/* Hero Section */
+.home {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 90vh;
+    text-align: center;
+}
+
+.intro {
+    background: rgba(0, 0, 0, 0.6);
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0px 4px 10px rgba(255, 255, 255, 0.1);
+}
+
+.intro h2 {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+}
+
+.intro p {
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+    opacity: 0.8;
+}
+
+button {
+    padding: 12px 25px;
+    font-size: 1rem;
+    background: linear-gradient(135deg, #ff8c00, #ff4d00);
+    border: none;
+    color: white;
+    cursor: pointer;
+    border-radius: 25px;
+    transition: 0.3s ease-in-out;
+}
+
+button:hover {
+    background: linear-gradient(135deg, #ff4d00, #ff8c00);
+    transform: scale(1.05);
+}
+
+/* Sections */
+section {
+    margin-top: 50px;
+    padding: 50px 10%;
+    background: rgba(0, 0, 0, 0.6);
+    border-radius: 15px;
+    box-shadow: 0px 4px 10px rgba(255, 255, 255, 0.1);
+}
+
+section h2 {
+    font-size: 2rem;
+    margin-bottom: 15px;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+ul li {
+    font-size: 1.2rem;
+    margin: 10px 0;
+}
+
+/* Registration Form */
+.registration form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(255, 255, 255, 0.1);
+    animation: hueRotate 0.5s linear infinite;
+}
+
+.registration input {
+    width: 80%;
+    padding: 12px;
+    margin-bottom: 10px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+.registration input:focus {
+    outline: 2px solid orange;
+}
+
+/* Footer */
+footer {
+    background: rgba(0, 0, 0, 0.7);
+    padding: 20px;
+    text-align: center;
+    margin-top: 50px;
+}
+
+footer .footer-content {
+    color: white;
+}
+
+footer ul {
+    list-style: none;
+    padding: 0;
+    margin-top: 10px;
+}
+
+footer ul li {
+    display: inline;
+    margin-right: 15px;
+}
+
+footer ul li a {
+    color: orange;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+footer ul li a:hover {
+    text-decoration: underline;
+}
+/* Login Section */
+.login {
+    position: fixed;
+    top: 50%;
+    right: 5%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.7);
+    padding: 20px;
+    border-radius: 10px;
+    width: 250px;
+    box-shadow: 0 4px 15px rgba(255, 255, 255, 0.2);
+    animation: hueRotate 0.5s linear infinite;
+}
+
+.login h3 {
+    text-align: center;
+}
+
+.login form {
+    display: flex;
+    flex-direction: column;
+}
+
+.login input {
+    margin-bottom: 10px;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+}
+
+.login button {
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background: orange;
+    color: white;
+    cursor: pointer;
+}
+
+.login a {
+    color: orange;
+    text-decoration: none;
+    text-align: center;
+}
+
+/* Animations */
+@keyframes slideInDown {
+    from {
+        transform: translateY(-100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes bounceIn {
+    from {
+        transform: scale(0.5);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes hueRotate {
+    from {
+        filter: hue-rotate(0deg);
+    }
+    to {
+        filter: hue-rotate(360deg);
+    }
+}
