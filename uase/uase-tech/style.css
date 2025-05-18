@@ -83,13 +83,16 @@ header {
 
 /* Hamburger Menu (Hidden by default on Desktop) */
 .hamburger-menu {
-    display: none; /* Hidden on large screens, shown via media query */
+    display: none; /* Will be overridden by media query on small screens */
     flex-direction: column;
     justify-content: space-around;
     width: 30px;
     height: 25px;
     cursor: pointer;
     z-index: 1001; /* Ensure hamburger is above the mobile menu */
+    /* Add this if you want to ensure it's visible even with background issues */
+    /* background-color: transparent; */
+    /* border: 1px solid var(--light-bg); */ /* For debugging visibility */
 }
 
 .hamburger-menu .bar {
@@ -271,59 +274,58 @@ footer {
 @media (max-width: 768px) {
     header {
         padding: 1rem;
-        flex-wrap: nowrap; /* Keep logo and hamburger on one line */
-        justify-content: space-between; /* Push logo left, hamburger right */
+        flex-wrap: nowrap;
+        justify-content: space-between;
     }
 
     .logo {
-        width: 50px; /* Smaller logo container on mobile */
+        width: 50px;
         height: 50px;
     }
 
-    /* Hide desktop navigation and style mobile menu */
+    /* Hide desktop navigation */
     .main-nav {
-        /* This targets the <nav> element, allowing it to become the slide-in menu */
-        display: none; /* Hide by default */
+        display: none; /* This will be overridden by .main-nav.active */
         position: fixed;
         top: 0;
         right: -100%; /* Start off-screen */
-        width: 75%; /* Width of the mobile menu */
-        max-width: 300px; /* Optional: max width for larger phones */
-        height: 100%; /* Full height of viewport */
-        background-color: var(--bg-color); /* Menu background */
-        box-shadow: -5px 0 15px rgba(0,0,0,0.4); /* Deeper shadow */
+        width: 75%;
+        max-width: 300px;
+        height: 100%;
+        background-color: var(--bg-color);
+        box-shadow: -5px 0 15px rgba(0,0,0,0.4);
         transition: right 0.3s ease-in-out;
-        z-index: 999; /* Below hamburger, above main content */
-        overflow-y: auto; /* Enable scrolling if menu content is long */
+        z-index: 999;
+        overflow-y: auto;
     }
 
-    /* When the 'active' class is added to .main-nav by JS */
+    /* Show mobile navigation when active */
     .main-nav.active {
         display: block; /* Make it visible */
         right: 0; /* Slide into view */
     }
 
     .main-nav ul {
-        flex-direction: column; /* Stack links vertically */
-        justify-content: center; /* Center links vertically */
-        align-items: center; /* Center links horizontally */
-        height: 100%; /* Make ul take full height of nav container */
-        padding: 80px 20px 20px; /* Push content down from top for space, add bottom padding */
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+        padding: 80px 20px 20px;
     }
 
     .main-nav ul li {
-        margin: 20px 0; /* More space between vertical links */
+        margin: 20px 0;
     }
 
     .main-nav ul li a {
-        font-size: 1.3em; /* Larger font for readability */
+        font-size: 1.3em;
         padding: 10px 20px;
-        color: var(--light-bg); /* Link color for mobile menu */
+        color: var(--light-bg);
     }
 
-    /* Show the hamburger menu on small screens */
+    /* Make hamburger menu visible on screens <= 768px */
     .hamburger-menu {
-        display: flex; /* Show it */
+        display: flex; /* IMPORTANT: This makes it visible */
     }
 
     /* Hamburger animation when active (transforms into an 'X') */
@@ -331,24 +333,23 @@ footer {
         transform: translateY(8px) rotate(45deg);
     }
     .hamburger-menu.active .bar:nth-child(2) {
-        opacity: 0; /* Hide middle bar */
+        opacity: 0;
     }
     .hamburger-menu.active .bar:nth-child(3) {
         transform: translateY(-8px) rotate(-45deg);
     }
 
     #hero h1 {
-        font-size: 2em; /* Smaller hero title */
+        font-size: 2em;
     }
 
     #hero p {
         font-size: 1em;
     }
 
-    /* Service cards will naturally stack due to flex-wrap */
     .service-card {
-        margin: 1rem auto; /* Center individual cards on mobile */
-        max-width: 90%; /* Allow cards to take more width */
+        margin: 1rem auto;
+        max-width: 90%;
     }
 
     #registrationForm {
@@ -357,12 +358,11 @@ footer {
 
     #registrationForm input[type="text"],
     #registrationForm input[type="file"] {
-        width: calc(100% - 20px); /* Re-calculate width for padding */
+        width: calc(100% - 20px);
     }
 }
 
 @media (max-width: 480px) {
-    /* Further adjustments for very small phones */
     #hero h1 {
         font-size: 1.8em;
     }
@@ -374,7 +374,7 @@ footer {
         height: 45px;
     }
     .main-nav {
-        width: 85%; /* Wider menu on very small screens */
+        width: 85%;
     }
     .main-nav ul li a {
         font-size: 1.1em;
