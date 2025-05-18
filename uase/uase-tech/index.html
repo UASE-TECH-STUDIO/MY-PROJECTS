@@ -12,7 +12,8 @@
         <div class="logo">
             <img class="logo-img" src="my logo.jpg" alt="UASE Logo">
         </div>
-        <nav class="main-nav"> <ul>
+        <nav class="main-nav">
+            <ul>
                 <li><a href="#about">About Us</a></li>
                 <li><a href="#services">Services</a></li>
                 <li><a href="#registration">Register</a></li>
@@ -102,16 +103,18 @@
         document.addEventListener('DOMContentLoaded', function() {
             // Hamburger Menu Logic
             const hamburgerMenu = document.querySelector('.hamburger-menu');
-            const mainNav = document.querySelector('.main-nav ul'); // Target the ul inside .main-nav
+            // Corrected target: select the <nav> element with class 'main-nav'
+            const mainNav = document.querySelector('.main-nav'); 
 
-            if (hamburgerMenu && mainNav) { // Ensure elements exist before adding event listeners
+            if (hamburgerMenu && mainNav) {
                 hamburgerMenu.addEventListener('click', function() {
                     hamburgerMenu.classList.toggle('active');
-                    mainNav.classList.toggle('active');
+                    mainNav.classList.toggle('active'); // Toggle 'active' class on the NAV element
                 });
 
                 // Close menu when a navigation link is clicked (improves mobile UX)
-                const navLinks = mainNav.querySelectorAll('li a');
+                // We still need to select the links within the UL inside the mainNav
+                const navLinks = mainNav.querySelectorAll('ul li a'); 
                 navLinks.forEach(link => {
                     link.addEventListener('click', function() {
                         hamburgerMenu.classList.remove('active');
@@ -127,7 +130,6 @@
 
                 sections.forEach(section => {
                     const sectionTop = section.getBoundingClientRect().top;
-                    // Adjust the 100px value if sections appear too early/late
                     if (sectionTop < windowHeight - 100) {
                         section.classList.add('visible');
                     } else {
@@ -136,7 +138,7 @@
                 });
             }
             window.addEventListener('scroll', revealSectionsOnScroll);
-            revealSectionsOnScroll(); // Run once on load to show initial sections
+            revealSectionsOnScroll();
 
             // Mouse hover effect for service cards (using CSS variables)
             document.querySelectorAll('.service-card').forEach(card => {
@@ -161,8 +163,7 @@
                 cards.forEach(card => {
                     const cardTop = card.getBoundingClientRect().top;
 
-                    // Check if the card is in the viewport
-                    if (cardTop < windowHeight - 100) { // Adjust the 100px value as needed
+                    if (cardTop < windowHeight - 100) {
                         card.classList.add('visible');
                     } else {
                         card.classList.remove('visible');
@@ -170,7 +171,7 @@
                 });
             }
             window.addEventListener('scroll', revealCardsOnScroll);
-            revealCardsOnScroll(); // Run once on load to show initially visible cards
+            revealCardsOnScroll();
         });
     </script>
 </body>
