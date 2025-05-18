@@ -21,6 +21,7 @@ body {
     line-height: 1.6;
     color: var(--text-color);
     background-color: var(--bg-color);
+    overflow-x: hidden; /* Prevents horizontal scroll from menu */
 }
 
 /* Header */
@@ -30,30 +31,73 @@ header {
     justify-content: space-between;
     padding: 1rem 2rem;
     background-color: var(--bg-color);
-    color: var(--bg-color);
+    color: var(--bg-color); /* This color won't be visible directly on header, but if elements inherit */
+    position: sticky;
+    top: 0;
+    z-index: 1000; /* Ensure header is always on top */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 
-header .logo img {
-    width: 100px;
+.logo {
+    /* Style for the div containing the logo */
+    border-radius: 50%;
+    width: 60px; /* Fixed size for the logo container */
+    height: 60px;
+    display: flex; /* To center the image inside */
+    justify-content: center;
+    align-items: center;
+    box-shadow: 4px 4px 8px rgba(255,255,255,0.2), /* Adjusted shadow for dark background */
+                -4px -4px 8px rgba(0,0,0,0.5);
+    animation: hue 6s linear infinite;
+    overflow: hidden; /* Ensure image doesn't overflow rounded container */
 }
 
-header nav ul {
+.logo-img { /* Specific class for the image itself, changed from .logo */
+    width: 100%; /* Make image fill its container */
+    height: 100%;
+    object-fit: cover; /* Crop image to fit */
+}
+
+/* Main Navigation (Desktop) */
+.main-nav ul { /* Targeting ul inside .main-nav */
     display: flex;
     list-style-type: none;
+    margin: 0;
+    padding: 0;
 }
 
-header nav ul li {
+.main-nav ul li {
     margin-left: 2rem;
 }
 
-header nav ul li a {
+.main-nav ul li a {
     color: var(--light-bg);
     text-decoration: none;
     font-weight: bold;
+    transition: color 0.3s ease;
 }
 
-header nav ul li a:hover {
+.main-nav ul li a:hover {
     color: var(--highlight-color);
+}
+
+/* Hamburger Menu (Hidden by default on Desktop) */
+.hamburger-menu {
+    display: none; /* Hidden on large screens, shown via media query */
+    flex-direction: column;
+    justify-content: space-around;
+    width: 30px;
+    height: 25px;
+    cursor: pointer;
+    z-index: 1001; /* Ensure hamburger is above the mobile menu */
+}
+
+.hamburger-menu .bar {
+    width: 100%;
+    height: 3px;
+    background-color: var(--light-bg); /* Color for the bars */
+    border-radius: 5px;
+    transition: all 0.3s ease;
 }
 
 /* Hero Section */
@@ -67,6 +111,7 @@ header nav ul li a:hover {
 #hero h1 {
     font-size: 3rem;
     margin-bottom: 1rem;
+    color: var(--light-bg); /* Ensure hero title color is correct */
 }
 
 #hero p {
@@ -94,7 +139,8 @@ section {
     opacity: 0;
     transform: translateY(50px);
     transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-
+    background-color: var(--bg-color); /* Set background for all sections */
+    color: var(--light-bg); /* Default text color for sections */
 }
 
 section.visible {
@@ -106,31 +152,67 @@ h2 {
     text-align: center;
     font-size: 2rem;
     margin-bottom: 1rem;
+    color: var(--highlight-color); /* Default heading color */
+}
+
+#our, #join, #contact, #about {
+    color: var(--light-bg); /* Override specific section heading/text colors */
 }
 
 /* Services Section */
 #services {
     display: flex;
-    justify-content: space-around;
+    justify-content: center; /* Use center to group cards */
     flex-wrap: wrap;
+    gap: 1rem; /* Space between cards */
 }
 
 .service-card {
-    background-color: var(--light-bg);
+    background-color: var(--accent-color); /* Updated from light-bg */
+    color: var(--light-bg); /* Text color for service cards */
     padding: 2rem;
-    margin: 1rem;
-    border-radius: 10px;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    margin: 1rem; /* Kept margin for outer spacing */
+    border-radius: 15px;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2);
     max-width: 300px;
-    text-align: center;
-    transition: transform 0.3s ease;
-    
-    
+    text-align: center; /* Kept center for main text alignment */
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease, opacity 0.6s ease-out, transform 0.6s ease-out; /* Combined transitions */
+    opacity: 0;
+    transform: translateY(50px);
+}
+
+.service-card.visible {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 .service-card:hover {
     transform: translateY(-10px);
+    box-shadow: 0px 12px 20px rgba(0, 0, 0, 0.3);
+    background-color: var(--hover-highlight);
 }
+
+.service-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: var(--light-bg); /* Heading color for service cards */
+    text-align: center; /* Changed to center for consistency */
+}
+
+.service-card p {
+    font-size: 1rem;
+    color: var(--light-bg); /* Paragraph color for service cards */
+    line-height: 1.6;
+}
+
+/* Staggered delay for each card (combined with overall transition) */
+.service-card:nth-child(1) { transition-delay: 0.05s; }
+.service-card:nth-child(2) { transition-delay: 0.1s; }
+.service-card:nth-child(3) { transition-delay: 0.15s; }
+.service-card:nth-child(4) { transition-delay: 0.2s; }
+.service-card:nth-child(5) { transition-delay: 0.25s; }
+.service-card:nth-child(6) { transition-delay: 0.3s; }
+
 
 /* Registration Form Section */
 #registration form {
@@ -140,33 +222,13 @@ h2 {
     background-color: var(--light-bg);
     border-radius: 10px;
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-}
-#our{
-    color: grey; 
-}
-.logo{
-    border-radius: 50%;
-    width: 60px;
-    height: 60px;
-    object-fit: cover;
-    box-shadow: 4px 4px 8px rgba(255,255,255,0.5),
-    -4px -4px 8px rgba(0,0,0,0.5);
-    animation: hue 6s linear infinite;
-}
-#join{
-    color: grey;  
-}
-#contact{
-    color: grey;  
+    text-align: left;
 }
 
 #registration label, #registration input, #registration button {
     display: block;
     width: 100%;
     margin-bottom: 1rem;
-}
-#about{
-    color: grey;
 }
 
 #registration button {
@@ -192,68 +254,129 @@ footer {
     padding: 1rem;
 }
 
-@keyframes hue{
-    0%{
+@keyframes hue {
+    0% {
         filter: hue-rotate(0deg);
     }
-    100%{
+    100% {
         filter: hue-rotate(360deg);
     }
 }
-/* Base styles for the Service Card animations */
-.service-card {
-    opacity: 0;
-    transform: translateY(50px);
-    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+
+
+/* ==================================== */
+/* MEDIA QUERIES (Responsive Design)  */
+/* ==================================== */
+
+@media (max-width: 768px) {
+    header {
+        padding: 1rem;
+        flex-wrap: nowrap; /* Keep logo and hamburger on one line */
+        justify-content: space-between; /* Push logo left, hamburger right */
+    }
+
+    .logo {
+        width: 50px; /* Smaller logo container on mobile */
+        height: 50px;
+    }
+
+    /* Hide desktop navigation and style mobile menu */
+    .main-nav {
+        /* This targets the <nav> element, allowing it to become the slide-in menu */
+        display: none; /* Hide by default */
+        position: fixed;
+        top: 0;
+        right: -100%; /* Start off-screen */
+        width: 75%; /* Width of the mobile menu */
+        max-width: 300px; /* Optional: max width for larger phones */
+        height: 100%; /* Full height of viewport */
+        background-color: var(--bg-color); /* Menu background */
+        box-shadow: -5px 0 15px rgba(0,0,0,0.4); /* Deeper shadow */
+        transition: right 0.3s ease-in-out;
+        z-index: 999; /* Below hamburger, above main content */
+        overflow-y: auto; /* Enable scrolling if menu content is long */
+    }
+
+    /* When the 'active' class is added to .main-nav by JS */
+    .main-nav.active {
+        display: block; /* Make it visible */
+        right: 0; /* Slide into view */
+    }
+
+    .main-nav ul {
+        flex-direction: column; /* Stack links vertically */
+        justify-content: center; /* Center links vertically */
+        align-items: center; /* Center links horizontally */
+        height: 100%; /* Make ul take full height of nav container */
+        padding: 80px 20px 20px; /* Push content down from top for space, add bottom padding */
+    }
+
+    .main-nav ul li {
+        margin: 20px 0; /* More space between vertical links */
+    }
+
+    .main-nav ul li a {
+        font-size: 1.3em; /* Larger font for readability */
+        padding: 10px 20px;
+        color: var(--light-bg); /* Link color for mobile menu */
+    }
+
+    /* Show the hamburger menu on small screens */
+    .hamburger-menu {
+        display: flex; /* Show it */
+    }
+
+    /* Hamburger animation when active (transforms into an 'X') */
+    .hamburger-menu.active .bar:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+    }
+    .hamburger-menu.active .bar:nth-child(2) {
+        opacity: 0; /* Hide middle bar */
+    }
+    .hamburger-menu.active .bar:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
+    }
+
+    #hero h1 {
+        font-size: 2em; /* Smaller hero title */
+    }
+
+    #hero p {
+        font-size: 1em;
+    }
+
+    /* Service cards will naturally stack due to flex-wrap */
+    .service-card {
+        margin: 1rem auto; /* Center individual cards on mobile */
+        max-width: 90%; /* Allow cards to take more width */
+    }
+
+    #registrationForm {
+        padding: 20px;
+    }
+
+    #registrationForm input[type="text"],
+    #registrationForm input[type="file"] {
+        width: calc(100% - 20px); /* Re-calculate width for padding */
+    }
 }
 
-/* Visible class to trigger animation on scroll */
-.service-card.visible {
-    opacity: 1;
-    transform: translateY(0);
+@media (max-width: 480px) {
+    /* Further adjustments for very small phones */
+    #hero h1 {
+        font-size: 1.8em;
+    }
+    header {
+        padding: 0.8rem;
+    }
+    .logo {
+        width: 45px;
+        height: 45px;
+    }
+    .main-nav {
+        width: 85%; /* Wider menu on very small screens */
+    }
+    .main-nav ul li a {
+        font-size: 1.1em;
+    }
 }
-/* Base Service Card Styles */
-.service-card {
-    background-color: var(--accent-color);
-    color: var(--text-color);
-    padding: 2rem;
-    margin: 1rem;
-    border-radius: 15px;              /* Rounded corners */
-    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
-    max-width: 300px;
-    text-align: center;
-    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
-    opacity: 0;                       /* Initial opacity for animation */
-    transform: translateY(50px);      /* Initial position for scroll animation */
-}
-
-/* Hover Effect */
-.service-card:hover {
-    transform: translateY(-10px);     /* Lift effect on hover */
-    box-shadow: 0px 12px 20px rgba(0, 0, 0, 0.3); /* Deeper shadow on hover */
-    background-color: var(--hover-highlight); /* Slightly darker background */
-}
-
-/* Service Card Title */
-.service-card h3 {
-    font-size: 1.5rem;
-    margin-bottom: 1rem;
-    color: var(--text-color);
-}
-
-/* Service Card Paragraph */
-.service-card p {
-    font-size: 1rem;
-    color: var(--text-color);
-    line-height: 1.6;
-}
-
-
-
-/* Staggered delay for each card */
-.service-card:nth-child(1) { transition-delay: 0.1s; }
-.service-card:nth-child(2) { transition-delay: 0.2s; }
-.service-card:nth-child(3) { transition-delay: 0.3s; }
-.service-card:nth-child(4) { transition-delay: 0.4s; }
-.service-card:nth-child(5) { transition-delay: 0.5s; }
-.service-card:nth-child(6) { transition-delay: 0.6s; }
