@@ -6,6 +6,8 @@
     --light-bg: #c2c5aa;
     --text-color: #333d29;
     --hover-highlight: #b6ad90;
+    --section-bg-dark: #4a270d; /* Slightly darker background for alternating sections */
+    --section-bg-light: #6b3e1f; /* Slightly lighter background for alternating sections */
 }
 
 /* Reset */
@@ -17,82 +19,120 @@
 
 /* Body and Font */
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* A more modern font choice */
     line-height: 1.6;
     color: var(--text-color);
     background-color: var(--bg-color);
     overflow-x: hidden; /* Prevents horizontal scroll from menu */
+    scroll-behavior: smooth; /* Smooth scrolling for anchor links */
+}
+
+/* General Link Styling */
+a {
+    text-decoration: none;
+    color: var(--highlight-color);
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: var(--light-bg);
+}
+
+/* Button Styling */
+.btn {
+    display: inline-block;
+    background-color: var(--accent-color);
+    color: var(--light-bg);
+    padding: 12px 25px;
+    border-radius: 8px;
+    text-align: center;
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.btn:hover {
+    background-color: var(--hover-highlight);
+    transform: translateY(-2px);
 }
 
 /* Header */
 header {
     display: flex;
     align-items: center;
-    justify-content: space-between; /* Ensures logo and hamburger are at ends */
+    justify-content: space-between;
     padding: 1rem 2rem;
     background-color: var(--bg-color);
     position: sticky;
     top: 0;
-    z-index: 1000; /* Ensure header is always on top */
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    z-index: 1000;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2); /* Stronger shadow for depth */
 }
 
 /* Logo Styling */
 .logo {
-    /* The div that holds the image, ensuring it's a flexible container */
-    flex-shrink: 0; /* Prevent logo from shrinking on small screens */
-    margin-right: 1rem; /* Space between logo and nav/hamburger */
+    flex-shrink: 0;
 }
 
-.logo-img { /* Apply border-radius and shadow directly to the image */
-    width: 60px; /* Fixed size for the image itself */
-    height: 60px;
-    border-radius: 50%; /* Make it perfectly round */
-    object-fit: cover; /* Crop image to fit */
-    box-shadow: 4px 4px 8px rgba(255,255,255,0.2), /* Adjusted shadow for dark background */
-                -4px -4px 8px rgba(0,0,0,0.5);
+.logo-img {
+    width: 65px; /* Slightly larger logo */
+    height: 65px;
+    border-radius: 50%;
+    object-fit: cover;
+    box-shadow: 0 0 15px rgba(255,255,255,0.3); /* Softer, glowing shadow */
     animation: hue 6s linear infinite;
+    filter: saturate(1.2); /* Make logo colors pop a bit more */
 }
 
 /* Main Navigation (Desktop) */
-.main-nav ul { /* Targeting ul inside .main-nav */
-    display: flex; /* Display as flex for desktop */
+.main-nav ul {
+    display: flex;
     list-style-type: none;
     margin: 0;
     padding: 0;
 }
 
 .main-nav ul li {
-    margin-left: 2rem;
+    margin-left: 2.5rem; /* More space between nav items */
 }
 
 .main-nav ul li a {
     color: var(--light-bg);
-    text-decoration: none;
-    font-weight: bold;
-    transition: color 0.3s ease;
+    font-weight: 600; /* Slightly bolder */
+    padding: 5px 0; /* Add padding for click area */
+    position: relative; /* For underline effect */
 }
 
-.main-nav ul li a:hover {
-    color: var(--highlight-color);
+.main-nav ul li a::after { /* Underline effect on hover */
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    background: var(--highlight-color);
+    bottom: 0;
+    left: 0;
+    transition: width 0.3s ease-out;
 }
 
+.main-nav ul li a:hover::after {
+    width: 100%;
+}
 /* Hamburger Menu (Hidden by default on Desktop) */
 .hamburger-menu {
-    display: none; /* Hide on large screens, show with media query */
+    display: none;
     flex-direction: column;
     justify-content: space-around;
     width: 30px;
     height: 25px;
     cursor: pointer;
-    z-index: 1001; /* Ensure hamburger is above the mobile menu */
-    flex-shrink: 0; /* Prevent hamburger from shrinking */
+    z-index: 1001;
 }
 
 .hamburger-menu .bar {
     width: 100%;
     height: 3px;
-    background-color: var(--light-bg); /* Color for the bars */
+    background-color: var(--light-bg);
     border-radius: 5px;
     transition: all 0.3s ease;
 }
@@ -100,45 +140,44 @@ header {
 /* Hero Section */
 #hero {
     text-align: center;
-    padding: 6rem 2rem;
-    background-color: var(--highlight-color);
+    padding: 8rem 2rem; /* More vertical padding */
+    background: linear-gradient(135deg, var(--highlight-color), var(--accent-color)); /* Gradient background */
     color: var(--light-bg);
 }
 
 #hero h1 {
-    font-size: 3rem;
-    margin-bottom: 1rem;
-    color: var(--light-bg);
+    font-size: 3.5rem; /* Larger, more impactful heading */
+    margin-bottom: 1.5rem;
+    color: var(--light-bg); /* Ensure it stands out */
+    text-shadow: 2px 2px 5px rgba(0,0,0,0.3); /* Subtle text shadow */
 }
 
 #hero p {
-    font-size: 1.2rem;
-    margin-bottom: 2rem;
+    font-size: 1.35rem; /* Larger paragraph text */
+    margin-bottom: 3rem;
+    max-width: 800px; /* Constrain width for readability */
+    margin-left: auto; /* Center with margin auto */
+    margin-right: auto;
 }
 
-#hero .btn {
-    padding: 1rem 2rem;
-    background-color: var(--accent-color);
-    color: var(--light-bg);
-    text-decoration: none;
-    font-weight: bold;
-    border-radius: 5px;
-    transition: background-color 0.3s ease;
-}
-
-#hero .btn:hover {
-    background-color: var(--hover-highlight);
-}
 
 /* Section Styles */
 section {
-    padding: 4rem 2rem;
+    padding: 5rem 2rem; /* Consistent padding for all sections */
     opacity: 0;
     transform: translateY(50px);
     transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-    background-color: var(--bg-color);
-    color: var(--light-bg);
+    color: var(--light-bg); /* Default text color for sections */
 }
+
+section:nth-of-type(odd) { /* Alternating background colors for sections */
+    background-color: var(--section-bg-dark);
+}
+
+section:nth-of-type(even) {
+    background-color: var(--section-bg-light);
+}
+
 
 section.visible {
     opacity: 1;
@@ -147,35 +186,52 @@ section.visible {
 
 h2 {
     text-align: center;
-    font-size: 2rem;
-    margin-bottom: 1rem;
+    font-size: 2.5rem; /* Larger section titles */
+    margin-bottom: 2.5rem; /* More space below titles */
     color: var(--highlight-color);
+    text-transform: capitalize; /* Capitalize each word */
 }
 
-#our, #join, #contact, #about {
-    color: var(--light-bg);
+/* Individual Section Overrides for text color, if needed. General color is light-bg now. */
+/* #our, #join, #contact, #about { color: var(--light-bg); } */
+
+/* About Section */
+#about {
+    text-align: center;
 }
+
+#about p {
+    max-width: 900px; /* Wider text for about section */
+    margin: 0 auto; /* Center the paragraph */
+    font-size: 1.15rem;
+    line-height: 1.8; /* Improve readability */
+}
+
 
 /* Services Section */
 #services {
     display: flex;
-    justify-content: center;
     flex-wrap: wrap;
-    gap: 1rem;
+    justify-content: center; /* Center cards in the grid */
+    gap: 2rem; /* More space between cards */
+    padding-top: 2rem; /* Adjust padding if h2 has a large margin-bottom */
 }
 
 .service-card {
     background-color: var(--accent-color);
     color: var(--light-bg);
-    padding: 2rem;
-    margin: 1rem;
+    padding: 2.5rem; /* More padding inside cards */
     border-radius: 15px;
     box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2);
-    max-width: 300px;
-    text-align: center;
+    max-width: 320px; /* Slightly wider cards */
+    text-align: left; /* Keep text left-aligned within card */
     transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease, opacity 0.6s ease-out, transform 0.6s ease-out;
     opacity: 0;
     transform: translateY(50px);
+    display: flex; /* Use flexbox for card content */
+    flex-direction: column; /* Stack content vertically */
+    justify-content: space-between; /* Push title up, text down */
+    min-height: 220px; /* Ensure consistent card height */
 }
 
 .service-card.visible {
@@ -185,24 +241,24 @@ h2 {
 
 .service-card:hover {
     transform: translateY(-10px);
-    box-shadow: 0px 12px 20px rgba(0, 0, 0, 0.3);
+    box-shadow: 0px 12px 20px rgba(0, 0, 0, 0.4); /* Stronger shadow on hover */
     background-color: var(--hover-highlight);
 }
 
 .service-card h3 {
-    font-size: 1.5rem;
-    margin-bottom: 1rem;
+    font-size: 1.6rem; /* Slightly larger card titles */
+    margin-bottom: 0.8rem;
     color: var(--light-bg);
-    text-align: center;
+    text-align: left; /* Align card titles to the left */
 }
 
 .service-card p {
-    font-size: 1rem;
+    font-size: 1.05rem; /* Slightly larger body text */
     color: var(--light-bg);
-    line-height: 1.6;
+    line-height: 1.7; /* Better line spacing */
 }
 
-/* Staggered delay for each card (combined with overall transition) */
+/* Staggered delay for each card */
 .service-card:nth-child(1) { transition-delay: 0.05s; }
 .service-card:nth-child(2) { transition-delay: 0.1s; }
 .service-card:nth-child(3) { transition-delay: 0.15s; }
@@ -212,35 +268,70 @@ h2 {
 
 
 /* Registration Form Section */
-#registration form {
-    max-width: 600px;
-    margin: 0 auto;
-    padding: 2rem;
-    background-color: var(--light-bg);
-    border-radius: 10px;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-    text-align: left;
+#registration {
+    text-align: center; /* Center the form container */
 }
 
-#registration label, #registration input, #registration button {
+#registration form {
+    max-width: 600px;
+    margin: 0 auto; /* Center the form itself */
+    padding: 2.5rem; /* More padding inside form */
+    background-color: var(--light-bg);
+    border-radius: 12px; /* Slightly more rounded corners */
+    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.15);
+    text-align: left; /* Keep labels and inputs left-aligned within the form */
+}
+
+#registration label {
     display: block;
-    width: 100%;
-    margin-bottom: 1rem;
+    margin-bottom: 0.6rem;
+    font-weight: 600; /* Bolder labels */
+    color: var(--text-color); /* Darker text for labels */
+    font-size: 1.05rem;
+}
+
+#registration input[type="text"],
+#registration input[type="file"] {
+    width: calc(100% - 24px); /* Account for padding */
+    padding: 12px; /* More padding for inputs */
+    margin-bottom: 1.5rem; /* More space below inputs */
+    border: 1px solid var(--hover-highlight); /* Subtle border color */
+    border-radius: 6px;
+    font-size: 1.05rem;
+    background-color: #fcfcfc; /* Slightly off-white background */
+    color: var(--text-color);
 }
 
 #registration button {
-    padding: 1rem;
+    padding: 1.2rem; /* Larger button */
     background-color: var(--accent-color);
     color: var(--light-bg);
     font-weight: bold;
     border: none;
-    border-radius: 5px;
+    border-radius: 8px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 1.1em;
 }
 
 #registration button:hover {
     background-color: var(--hover-highlight);
+    transform: translateY(-2px);
+}
+
+/* Contact Section */
+#contact {
+    text-align: center;
+}
+
+#contact p {
+    margin-bottom: 0.8rem;
+    font-size: 1.1rem;
+    max-width: 800px; /* Constrain width */
+    margin-left: auto;
+    margin-right: auto;
 }
 
 /* Footer */
@@ -248,18 +339,14 @@ footer {
     background-color: var(--text-color);
     color: var(--light-bg);
     text-align: center;
-    padding: 1rem;
+    padding: 1.5rem; /* More padding */
+    font-size: 0.95em;
 }
 
 @keyframes hue {
-    0% {
-        filter: hue-rotate(0deg);
-    }
-    100% {
-        filter: hue-rotate(360deg);
-    }
+    0% { filter: hue-rotate(0deg); }
+    100% { filter: hue-rotate(360deg); }
 }
-
 
 /* ==================================== */
 /* MEDIA QUERIES (Responsive Design)  */
@@ -267,27 +354,26 @@ footer {
 
 @media (max-width: 768px) {
     header {
-        padding: 1rem;
-        /* Keep justify-content: space-between; from desktop for logo and hamburger */
+        padding: 0.8rem 1rem; /* Slightly reduced header padding */
     }
 
     .logo-img {
-        width: 50px; /* Smaller logo on mobile */
-        height: 50px;
+        width: 55px; /* Adjust logo size for mobile */
+        height: 55px;
     }
 
     /* Hide desktop navigation */
     .main-nav {
-        display: none; /* Hide the <nav> element on small screens by default */
+        display: none;
 
         /* Mobile Menu Appearance */
         position: fixed;
         top: 0;
-        right: -100%; /* Start off-screen */
+        right: -100%;
         width: 75%;
         max-width: 300px;
         height: 100%;
-        background-color: var(--bg-color); /* Mobile menu background */
+        background-color: var(--bg-color);
         box-shadow: -5px 0 15px rgba(0,0,0,0.4);
         transition: right 0.3s ease-in-out;
         z-index: 999;
@@ -296,16 +382,16 @@ footer {
 
     /* Show mobile navigation when 'active' class is added by JS */
     .main-nav.active {
-        display: block; /* Make it visible for the slide-in effect */
-        right: 0; /* Slide into view */
+        display: block;
+        right: 0;
     }
 
     .main-nav ul {
         flex-direction: column;
-        justify-content: center; /* Center vertically */
-        align-items: center; /* Center horizontally */
+        justify-content: center;
+        align-items: center;
         height: 100%;
-        padding: 80px 20px 20px; /* Space for logo/header at top */
+        padding: 80px 20px 20px;
     }
 
     .main-nav ul li {
@@ -313,14 +399,18 @@ footer {
     }
 
     .main-nav ul li a {
-        font-size: 1.3em;
+        font-size: 1.4em; /* Slightly larger for easier tapping */
         padding: 10px 20px;
         color: var(--light-bg);
+    }
+    
+    .main-nav ul li a::after { /* Remove underline on mobile links */
+        display: none;
     }
 
     /* Display the hamburger menu on screens <= 768px */
     .hamburger-menu {
-        display: flex; /* IMPORTANT: This makes it visible on mobile */
+        display: flex;
     }
 
     /* Hamburger animation when active (transforms into an 'X') */
@@ -334,44 +424,78 @@ footer {
         transform: translateY(-8px) rotate(-45deg);
     }
 
+    /* Section adjustments for mobile */
+    section {
+        padding: 4rem 1.5rem; /* Reduce section padding on smaller screens */
+    }
+
+    h1 {
+        font-size: 2.5rem;
+    }
+    
+    h2 {
+        font-size: 2rem;
+    }
+
     #hero h1 {
-        font-size: 2em;
+        font-size: 2.2rem; /* Adjust hero title for smaller screens */
     }
 
     #hero p {
-        font-size: 1em;
+        font-size: 1.1rem;
     }
 
     .service-card {
-        margin: 1rem auto;
-        max-width: 90%;
+        padding: 2rem;
+        max-width: 90%; /* Allow cards to take more width */
+        min-height: auto; /* Allow height to adjust */
     }
 
-    #registrationForm {
-        padding: 20px;
+    .service-card h3 {
+        font-size: 1.4rem;
     }
 
-    #registrationForm input[type="text"],
-    #registrationForm input[type="file"] {
-        width: calc(100% - 20px);
+    .service-card p {
+        font-size: 0.95rem;
+    }
+
+    #registration form {
+        padding: 1.8rem;
+    }
+
+    #registration input[type="text"],
+    #registration input[type="file"] {
+        padding: 10px;
+        margin-bottom: 1.2rem;
+    }
+
+    #registration button {
+        padding: 1rem;
+        font-size: 1em;
     }
 }
 
 @media (max-width: 480px) {
-    #hero h1 {
-        font-size: 1.8em;
-    }
     header {
-        padding: 0.8rem;
+        padding: 0.7rem 0.8rem;
     }
-    .logo-img { /* Adjust logo size for very small screens */
-        width: 45px;
-        height: 45px;
+    .logo-img {
+        width: 50px;
+        height: 50px;
     }
-    .main-nav {
-        width: 85%;
+    #hero h1 {
+        font-size: 1.9rem;
     }
-    .main-nav ul li a {
-        font-size: 1.1em;
+    #hero p {
+        font-size: 1em;
+    }
+    h2 {
+        font-size: 1.8rem;
+    }
+    section {
+        padding: 3rem 1rem;
+    }
+    .service-card {
+        padding: 1.5rem;
     }
 }
