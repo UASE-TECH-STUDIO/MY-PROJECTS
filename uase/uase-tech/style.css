@@ -28,39 +28,35 @@ body {
 header {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-between; /* Ensures logo and hamburger are at ends */
     padding: 1rem 2rem;
     background-color: var(--bg-color);
-    color: var(--bg-color); /* This color won't be visible directly on header, but if elements inherit */
     position: sticky;
     top: 0;
     z-index: 1000; /* Ensure header is always on top */
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 
+/* Logo Styling */
 .logo {
-    /* Style for the div containing the logo */
-    border-radius: 50%;
-    width: 60px; /* Fixed size for the logo container */
+    /* The div that holds the image, ensuring it's a flexible container */
+    flex-shrink: 0; /* Prevent logo from shrinking on small screens */
+    margin-right: 1rem; /* Space between logo and nav/hamburger */
+}
+
+.logo-img { /* Apply border-radius and shadow directly to the image */
+    width: 60px; /* Fixed size for the image itself */
     height: 60px;
-    display: flex; /* To center the image inside */
-    justify-content: center;
-    align-items: center;
+    border-radius: 50%; /* Make it perfectly round */
+    object-fit: cover; /* Crop image to fit */
     box-shadow: 4px 4px 8px rgba(255,255,255,0.2), /* Adjusted shadow for dark background */
                 -4px -4px 8px rgba(0,0,0,0.5);
     animation: hue 6s linear infinite;
-    overflow: hidden; /* Ensure image doesn't overflow rounded container */
-}
-
-.logo-img { /* Specific class for the image itself, changed from .logo */
-    width: 100%; /* Make image fill its container */
-    height: 100%;
-    object-fit: cover; /* Crop image to fit */
 }
 
 /* Main Navigation (Desktop) */
 .main-nav ul { /* Targeting ul inside .main-nav */
-    display: flex;
+    display: flex; /* Display as flex for desktop */
     list-style-type: none;
     margin: 0;
     padding: 0;
@@ -83,16 +79,14 @@ header {
 
 /* Hamburger Menu (Hidden by default on Desktop) */
 .hamburger-menu {
-    display: none; /* Will be overridden by media query on small screens */
+    display: none; /* Hide on large screens, show with media query */
     flex-direction: column;
     justify-content: space-around;
     width: 30px;
     height: 25px;
     cursor: pointer;
     z-index: 1001; /* Ensure hamburger is above the mobile menu */
-    /* Add this if you want to ensure it's visible even with background issues */
-    /* background-color: transparent; */
-    /* border: 1px solid var(--light-bg); */ /* For debugging visibility */
+    flex-shrink: 0; /* Prevent hamburger from shrinking */
 }
 
 .hamburger-menu .bar {
@@ -114,7 +108,7 @@ header {
 #hero h1 {
     font-size: 3rem;
     margin-bottom: 1rem;
-    color: var(--light-bg); /* Ensure hero title color is correct */
+    color: var(--light-bg);
 }
 
 #hero p {
@@ -142,8 +136,8 @@ section {
     opacity: 0;
     transform: translateY(50px);
     transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-    background-color: var(--bg-color); /* Set background for all sections */
-    color: var(--light-bg); /* Default text color for sections */
+    background-color: var(--bg-color);
+    color: var(--light-bg);
 }
 
 section.visible {
@@ -155,31 +149,31 @@ h2 {
     text-align: center;
     font-size: 2rem;
     margin-bottom: 1rem;
-    color: var(--highlight-color); /* Default heading color */
+    color: var(--highlight-color);
 }
 
 #our, #join, #contact, #about {
-    color: var(--light-bg); /* Override specific section heading/text colors */
+    color: var(--light-bg);
 }
 
 /* Services Section */
 #services {
     display: flex;
-    justify-content: center; /* Use center to group cards */
+    justify-content: center;
     flex-wrap: wrap;
-    gap: 1rem; /* Space between cards */
+    gap: 1rem;
 }
 
 .service-card {
-    background-color: var(--accent-color); /* Updated from light-bg */
-    color: var(--light-bg); /* Text color for service cards */
+    background-color: var(--accent-color);
+    color: var(--light-bg);
     padding: 2rem;
-    margin: 1rem; /* Kept margin for outer spacing */
+    margin: 1rem;
     border-radius: 15px;
     box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2);
     max-width: 300px;
-    text-align: center; /* Kept center for main text alignment */
-    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease, opacity 0.6s ease-out, transform 0.6s ease-out; /* Combined transitions */
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease, opacity 0.6s ease-out, transform 0.6s ease-out;
     opacity: 0;
     transform: translateY(50px);
 }
@@ -198,13 +192,13 @@ h2 {
 .service-card h3 {
     font-size: 1.5rem;
     margin-bottom: 1rem;
-    color: var(--light-bg); /* Heading color for service cards */
-    text-align: center; /* Changed to center for consistency */
+    color: var(--light-bg);
+    text-align: center;
 }
 
 .service-card p {
     font-size: 1rem;
-    color: var(--light-bg); /* Paragraph color for service cards */
+    color: var(--light-bg);
     line-height: 1.6;
 }
 
@@ -274,43 +268,44 @@ footer {
 @media (max-width: 768px) {
     header {
         padding: 1rem;
-        flex-wrap: nowrap;
-        justify-content: space-between;
+        /* Keep justify-content: space-between; from desktop for logo and hamburger */
     }
 
-    .logo {
-        width: 50px;
+    .logo-img {
+        width: 50px; /* Smaller logo on mobile */
         height: 50px;
     }
 
     /* Hide desktop navigation */
     .main-nav {
-        display: none; /* This will be overridden by .main-nav.active */
+        display: none; /* Hide the <nav> element on small screens by default */
+
+        /* Mobile Menu Appearance */
         position: fixed;
         top: 0;
         right: -100%; /* Start off-screen */
         width: 75%;
         max-width: 300px;
         height: 100%;
-        background-color: var(--bg-color);
+        background-color: var(--bg-color); /* Mobile menu background */
         box-shadow: -5px 0 15px rgba(0,0,0,0.4);
         transition: right 0.3s ease-in-out;
         z-index: 999;
         overflow-y: auto;
     }
 
-    /* Show mobile navigation when active */
+    /* Show mobile navigation when 'active' class is added by JS */
     .main-nav.active {
-        display: block; /* Make it visible */
+        display: block; /* Make it visible for the slide-in effect */
         right: 0; /* Slide into view */
     }
 
     .main-nav ul {
         flex-direction: column;
-        justify-content: center;
-        align-items: center;
+        justify-content: center; /* Center vertically */
+        align-items: center; /* Center horizontally */
         height: 100%;
-        padding: 80px 20px 20px;
+        padding: 80px 20px 20px; /* Space for logo/header at top */
     }
 
     .main-nav ul li {
@@ -323,9 +318,9 @@ footer {
         color: var(--light-bg);
     }
 
-    /* Make hamburger menu visible on screens <= 768px */
+    /* Display the hamburger menu on screens <= 768px */
     .hamburger-menu {
-        display: flex; /* IMPORTANT: This makes it visible */
+        display: flex; /* IMPORTANT: This makes it visible on mobile */
     }
 
     /* Hamburger animation when active (transforms into an 'X') */
@@ -369,7 +364,7 @@ footer {
     header {
         padding: 0.8rem;
     }
-    .logo {
+    .logo-img { /* Adjust logo size for very small screens */
         width: 45px;
         height: 45px;
     }
