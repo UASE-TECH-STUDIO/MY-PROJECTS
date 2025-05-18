@@ -8,35 +8,35 @@
 </head>
 <body>
 
-    <!-- Header Section -->
     <header>
         <div class="logo">
-            <img class="logo" src="my logo.jpg" alt="UASE Logo" width="100">
+            <img class="logo-img" src="my logo.jpg" alt="UASE Logo">
         </div>
-        <nav>
-            <ul>
+        <nav class="main-nav"> <ul>
                 <li><a href="#about">About Us</a></li>
                 <li><a href="#services">Services</a></li>
                 <li><a href="#registration">Register</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
         </nav>
+        <div class="hamburger-menu">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+        </div>
     </header>
 
-    <!-- Hero Section -->
     <section id="hero">
         <h1>Welcome to UASE TECH-STUDIO</h1>
         <p>Your Virtual Assistant for Tech and Academic Success</p>
         <a href="#registration" class="btn">Register Now</a>
     </section>
 
-    <!-- About Section -->
     <section id="about">
         <h2>What We Do</h2>
         <p>Are you a student or professional struggling with IT-related issues, assignments, or quizzes? Join UASE TECH-STUDIO for personalized assistance!</p>
     </section>
 
-    <!-- Services Section -->
     <section id="services">
         <h2 id="our">Our Services</h2>
         <div class="service-card">
@@ -65,7 +65,6 @@
         </div>
     </section>
 
-    <!-- Registration Form Section -->
     <section id="registration">
         <h2 id="join">Join the Success Family!</h2>
         <form id="registrationForm" action="https://submit-form.com/NOZocaQP4">
@@ -88,7 +87,6 @@
         </form>
     </section>
 
-    <!-- Contact Section -->
     <section id="contact">
         <h2>Contact Us</h2>
         <p>Location: Asokoro & Lifecamp, Abuja</p>
@@ -96,11 +94,84 @@
         <p>Email: uasetechstudio@gmail.com</p>
     </section>
 
-    <!-- Footer -->
     <footer>
         <p>&copy; 2024 UASE TECH-STUDIO. All Rights Reserved.</p>
     </footer>
 
-    <script src="script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Hamburger Menu Logic
+            const hamburgerMenu = document.querySelector('.hamburger-menu');
+            const mainNav = document.querySelector('.main-nav ul'); // Target the ul inside .main-nav
+
+            if (hamburgerMenu && mainNav) { // Ensure elements exist before adding event listeners
+                hamburgerMenu.addEventListener('click', function() {
+                    hamburgerMenu.classList.toggle('active');
+                    mainNav.classList.toggle('active');
+                });
+
+                // Close menu when a navigation link is clicked (improves mobile UX)
+                const navLinks = mainNav.querySelectorAll('li a');
+                navLinks.forEach(link => {
+                    link.addEventListener('click', function() {
+                        hamburgerMenu.classList.remove('active');
+                        mainNav.classList.remove('active');
+                    });
+                });
+            }
+
+            // Scroll animations for sections
+            function revealSectionsOnScroll() {
+                const sections = document.querySelectorAll('section');
+                const windowHeight = window.innerHeight;
+
+                sections.forEach(section => {
+                    const sectionTop = section.getBoundingClientRect().top;
+                    // Adjust the 100px value if sections appear too early/late
+                    if (sectionTop < windowHeight - 100) {
+                        section.classList.add('visible');
+                    } else {
+                        section.classList.remove('visible');
+                    }
+                });
+            }
+            window.addEventListener('scroll', revealSectionsOnScroll);
+            revealSectionsOnScroll(); // Run once on load to show initial sections
+
+            // Mouse hover effect for service cards (using CSS variables)
+            document.querySelectorAll('.service-card').forEach(card => {
+                card.addEventListener('mousemove', (e) => {
+                    const rect = card.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
+                    card.style.setProperty('--x', `${x}px`);
+                    card.style.setProperty('--y', `${y}px`);
+                });
+                card.addEventListener('mouseleave', () => {
+                    card.style.setProperty('--x', `50%`);
+                    card.style.setProperty('--y', `50%`);
+                });
+            });
+
+            // Function to add the "visible" class when each service card is in view
+            function revealCardsOnScroll() {
+                const cards = document.querySelectorAll('.service-card');
+                const windowHeight = window.innerHeight;
+
+                cards.forEach(card => {
+                    const cardTop = card.getBoundingClientRect().top;
+
+                    // Check if the card is in the viewport
+                    if (cardTop < windowHeight - 100) { // Adjust the 100px value as needed
+                        card.classList.add('visible');
+                    } else {
+                        card.classList.remove('visible');
+                    }
+                });
+            }
+            window.addEventListener('scroll', revealCardsOnScroll);
+            revealCardsOnScroll(); // Run once on load to show initially visible cards
+        });
+    </script>
 </body>
 </html>
